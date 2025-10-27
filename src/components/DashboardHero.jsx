@@ -6,7 +6,7 @@ export default function DashboardHero() {
     <section className="relative">
       <div className="h-64 md:h-80 w-full overflow-hidden rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900">
         <Spline
-          scene="https://prod.spline.design/qQUip0dJPqrrPryE/scene.splinecode"
+          scene="https://prod.spline.design/EF7JOSsHLk16Tlw9/scene.splinecode"
           style={{ width: '100%', height: '100%' }}
         />
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-white dark:from-gray-900 via-transparent to-transparent" />

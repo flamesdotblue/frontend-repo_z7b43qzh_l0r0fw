@@ -1,3 +1,5 @@
+import ThreeOrbs from './ThreeOrbs.jsx';
+
 const mockTasks = [
   { id: 'TSK-101', title: 'Design login page', status: 'In Progress', priority: 'High', assignee: 'Alex', due: '2025-11-10' },
   { id: 'TSK-102', title: 'Setup CI/CD', status: 'To Do', priority: 'Medium', assignee: 'Jamie', due: '2025-11-12' },
@@ -8,44 +10,49 @@ const mockTasks = [
 export default function TasksTable() {
   return (
     <div className="mt-6">
-      <div className="flex items-center justify-between mb-3">
-        <h3 className="text-base font-semibold text-gray-900 dark:text-gray-100">Assigned Tasks</h3>
-        <div className="text-xs text-gray-500 dark:text-gray-400">Showing {mockTasks.length} items</div>
-      </div>
-      <div className="overflow-hidden rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900">
-        <div className="overflow-x-auto">
-          <table className="min-w-full text-sm">
-            <thead className="bg-gray-50 dark:bg-gray-800/60 text-gray-600 dark:text-gray-300">
-              <tr>
-                <Th>Task ID</Th>
-                <Th>Title</Th>
-                <Th>Status</Th>
-                <Th>Priority</Th>
-                <Th>Assignee</Th>
-                <Th>Due Date</Th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-gray-200 dark:divide-gray-800">
-              {mockTasks.map((t) => (
-                <tr key={t.id} className="hover:bg-gray-50 dark:hover:bg-gray-800/50">
-                  <Td className="font-medium text-gray-900 dark:text-gray-100">{t.id}</Td>
-                  <Td>{t.title}</Td>
-                  <Td>
-                    <Badge intent={t.status === 'Done' ? 'success' : t.status === 'In Progress' ? 'warning' : 'neutral'}>
-                      {t.status}
-                    </Badge>
-                  </Td>
-                  <Td>
-                    <Badge intent={t.priority === 'High' ? 'danger' : t.priority === 'Medium' ? 'warning' : 'neutral'}>
-                      {t.priority}
-                    </Badge>
-                  </Td>
-                  <Td>{t.assignee}</Td>
-                  <Td>{t.due}</Td>
+      <div className="relative overflow-hidden rounded-xl border border-gray-200 dark:border-gray-800">
+        <div className="absolute inset-0 pointer-events-none opacity-60 dark:opacity-70">
+          <ThreeOrbs className="w-full h-full" />
+        </div>
+        <div className="relative z-10 p-4 flex items-center justify-between bg-white/70 dark:bg-gray-900/70 backdrop-blur">
+          <h3 className="text-base font-semibold text-gray-900 dark:text-gray-100">Assigned Tasks</h3>
+          <div className="text-xs text-gray-600 dark:text-gray-400">Showing {mockTasks.length} items</div>
+        </div>
+        <div className="relative z-10 overflow-hidden bg-white dark:bg-gray-900">
+          <div className="overflow-x-auto">
+            <table className="min-w-full text-sm">
+              <thead className="bg-gray-50/80 dark:bg-gray-800/60 text-gray-600 dark:text-gray-300">
+                <tr>
+                  <Th>Task ID</Th>
+                  <Th>Title</Th>
+                  <Th>Status</Th>
+                  <Th>Priority</Th>
+                  <Th>Assignee</Th>
+                  <Th>Due Date</Th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody className="divide-y divide-gray-200 dark:divide-gray-800">
+                {mockTasks.map((t) => (
+                  <tr key={t.id} className="hover:bg-gray-50 dark:hover:bg-gray-800/50">
+                    <Td className="font-medium text-gray-900 dark:text-gray-100">{t.id}</Td>
+                    <Td>{t.title}</Td>
+                    <Td>
+                      <Badge intent={t.status === 'Done' ? 'success' : t.status === 'In Progress' ? 'warning' : 'neutral'}>
+                        {t.status}
+                      </Badge>
+                    </Td>
+                    <Td>
+                      <Badge intent={t.priority === 'High' ? 'danger' : t.priority === 'Medium' ? 'warning' : 'neutral'}>
+                        {t.priority}
+                      </Badge>
+                    </Td>
+                    <Td>{t.assignee}</Td>
+                    <Td>{t.due}</Td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>
